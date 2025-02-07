@@ -9,11 +9,11 @@ const router = Router();
  * @swagger
  * tags:
  *   - name: PVC
- *     description: API endpoints for managing pvc (tsp) requests
+ *     description: API endpoints for managing pvc (travel salesman problem) requests
  *
  * /api/v1/pvc:
  *   post:
- *     summary: Create a new pvc (tsp) request
+ *     summary: Create a new pvc (travel salesman problem) request
  *     tags: [PVC]
  *     requestBody:
  *       required: true
@@ -23,7 +23,7 @@ const router = Router();
  *             $ref: '#/components/schemas/PVC'
  *     responses:
  *       200:
- *         description: The tsp path and its cost
+ *         description: The travel salesman problem path and its cost
  *         content:
  *           application/json:
  *             schema:

@@ -10,10 +10,14 @@ import trucksRoutes from "./trucksRoutes.js";
 import alertRulesRoutes from "./alertRulesRoutes.js";
 import captionsRoutes from "./captionsRoutes.js";
 import pvcRoutes from "./pvcRoutes.js";
+import verifyAuth from "../middleware/verifyAuth.js";
 
 const router = Router();
 
 router.use('/users', usersRouters);
+
+router.use(verifyAuth);
+
 router.use('/orders',ordersRouters); 
 router.use('/optimization',optimizationRouters); 
 router.use('/reports', reportsRouters);
