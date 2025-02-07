@@ -8,6 +8,7 @@ import { Schema, model } from "mongoose"
  *       required:
  *         - condition
  *         - capteur
+ *         - truck
  *       properties:
  *         condition:
  *           type: string
@@ -18,10 +19,14 @@ import { Schema, model } from "mongoose"
  *         description:
  *           type: string
  *           description: Additional description of the report.
+ *         truck:
+ *           type: string
+ *           description: The ID of the truck associated with the report.
  *       example:
  *         condition: Speed is null for 10 minutes
  *         capteur: Sensor1
  *         description: The sensor is functioning properly.
+ *         truck: 60d21b4667d0d8992e610c85
  */
 
 const reportSchema = new Schema({
@@ -35,6 +40,11 @@ const reportSchema = new Schema({
     },
     description: {
         type: String
+    },
+    truck: {
+        type: Schema.Types.ObjectId,
+        ref: 'Truck',
+        required: true
     },
 }, { timestamps: true });
 

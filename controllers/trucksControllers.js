@@ -50,6 +50,23 @@ const updateTruck = async (req, res, next) => {
     }
 }
 
+const addReportToTruck = async (req, res, next) => {
+    try {
+        const { id: truckId } = req.params;
+        const truck = await Truck.findById(truckId);
+        if (!truck) {
+            return next(new AppError(`Truck with ID ${truckId} not found`, 404));
+        }
+        const report = await Report.create(req.body);
+        truck.reports.push(report);
+        await truck.save();
+        res.status(201).json({ truck });
+    }
+    catch (error) {
+        next(error)
+    }
+}
+
 const deleteTruck = async (req, res, next) => {
     try {
         const { id: truckId } = req.params;
@@ -64,4 +81,4 @@ const deleteTruck = async (req, res, next) => {
     }
 }
 
-export default { getTrucks, createTruck, getTruckById, updateTruck, deleteTruck };
+export default { getTrucks, createTruck, getTruckById, updateTruck, deleteTruck, addReportToTruck };

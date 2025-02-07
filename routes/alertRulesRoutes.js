@@ -101,6 +101,22 @@ import alertRulesControllers from '../controllers/alertRulesControllers.js'
  *         description: The deleted alert rule.
  *       404:
  *         description: Alert rule not found.
+ * /api/v1/alert-rules/{id}/alert-now:
+ *   post:
+ *     summary: Trigger and Create an alert for the rule that has the {id} when the condition satisfied.
+ *     tags: [AlertRules]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The ID of the alert rule to trigger.
+ *     responses:
+ *       200:
+ *         description: Alert triggered successfully.
+ *       404:
+ *         description: Alert rule not found.
  */
 
 const {
@@ -108,7 +124,8 @@ const {
     getSingleAlertRule,
     createAlertRule,
     updateAlertRule,
-    deleteAlertRule
+    deleteAlertRule,
+    alertNow
 } = alertRulesControllers
 
 const router = Router();
@@ -118,6 +135,8 @@ router.get('/', getAlertRules);
 router.get('/:id', getSingleAlertRule);
 
 router.post('/', createAlertRule);
+
+router.post('/:id/alert-now', alertNow);
 
 router.patch('/:id', updateAlertRule);
 

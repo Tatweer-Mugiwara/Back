@@ -1,7 +1,7 @@
 import { Router } from "express";
 import trucksControllers from "../controllers/trucksControllers.js";
 
-const { getTrucks, createTruck, getTruckById, updateTruck, deleteTruck } = trucksControllers;
+const { getTrucks, createTruck, getTruckById, updateTruck, deleteTruck, addReportToTruck } = trucksControllers;
 
 const router = Router();
 
@@ -105,6 +105,31 @@ const router = Router();
  *         description: Truck deleted successfully
  *       404:
  *         description: Truck not found
+ *   post:
+ *     summary: Add a report to a truck by ID
+ *     tags: [Trucks]
+ *     parameters:
+ *       - in: path
+ *         name: truckId
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The ID of the truck to add a report to
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Report'
+ *     responses:
+ *       200:
+ *         description: Report added to the truck
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Truck'
+ *       404:
+ *         description: Truck not found
  */
 
 router.get('/', getTrucks);
@@ -112,6 +137,8 @@ router.get('/', getTrucks);
 router.post('/', createTruck);
 
 router.get('/:id', getTruckById);
+
+router.post('/:id', addReportToTruck);
 
 router.patch('/:id', updateTruck);
 

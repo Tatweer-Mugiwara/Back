@@ -1,6 +1,8 @@
 import AppError from '../utils/AppError.js';
 import AlertRule from '../models/AlertRule.js';
 import { isValidObjectId } from 'mongoose';
+import Alert from '../models/Alert.js';
+import EmailSend from '../utils/EmailSender.js';
 
 const getAlertRules = async (req, res, next) => {
     try {
@@ -91,10 +93,51 @@ const deleteAlertRule = async (req, res, next) => {
     }
 };
 
+const alertNow = async (req, res, next) => {
+    try {
+        const { id: aRuleId } = req.params;
+
+        if (!isValidObjectId(aRuleId)) {
+            throw new AppError('Invalid alert rule ID', 401)
+        }
+
+        const aRule = await AlertRule.findById(aRuleId);
+
+        if (!aRule) {
+            throw new AppError('Alert rule not found', 404);
+        }
+
+        const alert = new Alert({
+            condition: aRule.condition,
+            description: aRule.description,
+            initiator: aRule.initiator
+        });
+
+        await alert.save();
+
+        aRule.alerts.push(alert);
+
+        await aRule.save();
+
+        // Send alert (we can have many ways, just for the sake of the example)
+        await EmailSend({
+            name: 'Admin Alert!',
+            message: `Alert: ${aRule.description}`,
+            email: process.env.ADMIN_EMAIL,
+            subject: 'Alert'
+        })
+
+        res.status(200).json({ alert });
+    } catch (error) {
+        next(error);
+    }
+};
+
 export default {
     getAlertRules,
     getSingleAlertRule,
     createAlertRule,
     updateAlertRule,
-    deleteAlertRule
+    deleteAlertRule,
+    alertNow
 }

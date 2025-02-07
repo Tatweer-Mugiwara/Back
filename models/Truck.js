@@ -72,6 +72,7 @@ const truckSchema = new Schema({
             required: true
         }
     },
+    
 }, { timestamps: true });
 
 const Truck = model('Truck', truckSchema);
