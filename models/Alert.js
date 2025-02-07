@@ -6,11 +6,11 @@ import { Schema, model } from "mongoose"
  *     Alert:
  *       type: object
  *       required:
- *         - condition
+ *         - actualCondition
  *       properties:
- *         condition:
+ *         actualCondition:
  *           type: string
- *           description: The condition of the alert.
+ *           description: The actual condition of the alert (in Alert we have the intial condition, here we can store the system exact capture infos or the value exceeded until the the alert is resolved).
  *         initiator:
  *           type: string
  *           description: The user who initiated the alert.
@@ -44,7 +44,7 @@ import { Schema, model } from "mongoose"
  */
 
 const alertSchema = new Schema({
-    condition: {
+    actualCondition: {
         type: String,
         required: true
     },

@@ -65,6 +65,7 @@ const router = Router();
  */
 
 router.post('/suggest', suggestOptimization);
+
 router.post('/confirm', confirmOptimization);
 
 export default router;
