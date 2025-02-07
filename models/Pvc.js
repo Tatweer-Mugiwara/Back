@@ -7,10 +7,10 @@ import { Schema, model } from "mongoose";
  *   PVC:
  *    type: object
  *    required:
- *      - list
+ *      - cities
  *      - matrix
  *    properties:
- *      list:
+ *      cities:
  *          type: array
  *          items:
  *              type: string
@@ -27,7 +27,7 @@ import { Schema, model } from "mongoose";
 
 const PvcSchema = new Schema(
   {
-    list: [
+    cities: [
       {
         type: String,
         required: true,
