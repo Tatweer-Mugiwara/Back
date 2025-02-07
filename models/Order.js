@@ -62,6 +62,10 @@ const orderSchema = new Schema({
         type: String,
         required: true
     },
+    intermediateDestinations:{
+        type: [String],
+        required: false
+    },
     truck: {
         type: Schema.Types.ObjectId,
         ref: "Truck",

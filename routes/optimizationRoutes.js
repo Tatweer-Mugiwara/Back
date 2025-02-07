@@ -1,118 +1,70 @@
 import { Router } from "express";
-import usersControllers from '../controllers/usersControllers.js';
-import verifyAuth from "../middleware/verifyAuth.js";
-import ordersControllers from "../controllers/ordersControllers.js";
+import optimizationControllers from "../controllers/optimizationControllers.js";
 
-const { getOrders, getOrderById, createOrder, updateOrder, deleteOrder } = ordersControllers;
-
+const { suggestOptimization, confirmOptimization } = optimizationControllers;
 const router = Router();
 
 /**
  * @swagger
  * tags:
- *   - name: Orders
- *     description: API endpoints for managing orders
+ *   - name: Optimization
+ *     description: API endpoints for order optimization
  *
- * /api/v1/orders:
- *   get:
- *     summary: Get all orders
- *     tags: [Orders]
- *     responses:
- *       200:
- *         description: A list of orders
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                 $ref: '#/components/schemas/Order'
- *       404:
- *         description: No orders found
+ * /api/v1/optimization/suggest:
  *   post:
- *     summary: Create a new order
- *     tags: [Orders]
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             $ref: '#/components/schemas/Order'
+ *     summary: Suggest optimized order combinations
+ *     tags: [Optimization]
  *     responses:
- *       201:
- *         description: The newly created order
+ *       200:
+ *         description: A list of optimized order combinations
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/Order'
+ *               type: object
+ *               properties:
+ *                 optimizedOrders:
+ *                   type: array
+ *                   items:
+ *                     $ref: '#/components/schemas/Order'
+ *                 estimatedCost:
+ *                   type: number
+ *                   description: The estimated cost of the optimized combination
  *       400:
- *         description: Invalid request body
+ *         description: No pending orders available for optimization
  *
- * /api/v1/orders/{orderId}:
- *   get:
- *     summary: Get a single order by ID
- *     tags: [Orders]
- *     parameters:
- *       - in: path
- *         name: orderId
- *         required: true
- *         schema:
- *           type: string
- *         description: The ID of the order to retrieve
- *     responses:
- *       200:
- *         description: The order details
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Order'
- *       404:
- *         description: Order not found
- *   put:
- *     summary: Update an order by ID
- *     tags: [Orders]
- *     parameters:
- *       - in: path
- *         name: orderId
- *         required: true
- *         schema:
- *           type: string
- *         description: The ID of the order to update
+ * /api/v1/optimization/confirm:
+ *   post:
+ *     summary: Confirm the optimized order combination
+ *     tags: [Optimization]
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/Order'
+ *             type: object
+ *             properties:
+ *               optimizedOrders:
+ *                 type: array
+ *                 items:
+ *                   $ref: '#/components/schemas/Order'
  *     responses:
  *       200:
- *         description: The updated order
+ *         description: The new combined order created after optimization
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/Order'
- *       404:
- *         description: Order not found
- *   delete:
- *     summary: Delete an order by ID
- *     tags: [Orders]
- *     parameters:
- *       - in: path
- *         name: orderId
- *         required: true
- *         schema:
- *           type: string
- *         description: The ID of the order to delete
- *     responses:
- *       204:
- *         description: Order deleted successfully
- *       404:
- *         description: Order not found
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Optimization confirmed"
+ *                 newOrder:
+ *                   $ref: '#/components/schemas/Order'
+ *       400:
+ *         description: Invalid request body or no optimized orders provided
  */
 
-router.get('/', getOrders);
-router.post('/', createOrder);
-// router.get('/orders/:orderId', getOrderById);
-// router.put('/orders/:orderId', updateOrder);
-// router.delete('/orders/:orderId', deleteOrder);
+router.post('/suggest', suggestOptimization);
+router.post('/confirm', confirmOptimization);
 
 export default router;

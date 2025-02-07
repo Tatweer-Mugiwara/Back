@@ -111,8 +111,8 @@ const router = Router();
 
 router.get('/', getOrders);
 router.post('/', createOrder);
-// router.get('/orders/:orderId', getOrderById);
-// router.put('/orders/:orderId', updateOrder);
-// router.delete('/orders/:orderId', deleteOrder);
+router.get('/orders/:orderId', getOrderById);
+router.put('/orders/:orderId', updateOrder);
+router.delete('/orders/:orderId', deleteOrder);
 
 export default router;
