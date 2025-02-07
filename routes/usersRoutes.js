@@ -172,7 +172,7 @@ router.post('/login', loginUser);
 
 router.post('/register', registerUser);
 
-router.use(verifyAuth)
+router.use(verifyAuth);
 
 router.get('/', getUsers);
 
