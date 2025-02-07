@@ -1,6 +1,4 @@
 import { Router } from "express";
-import usersControllers from '../controllers/usersControllers.js';
-import verifyAuth from "../middleware/verifyAuth.js";
 import ordersControllers from "../controllers/ordersControllers.js";
 
 const { getOrders, getOrderById, createOrder, updateOrder, deleteOrder } = ordersControllers;
@@ -67,7 +65,7 @@ const router = Router();
  *               $ref: '#/components/schemas/Order'
  *       404:
  *         description: Order not found
- *   put:
+ *   patch:
  *     summary: Update an order by ID
  *     tags: [Orders]
  *     parameters:
@@ -110,9 +108,13 @@ const router = Router();
  */
 
 router.get('/', getOrders);
+
 router.post('/', createOrder);
+
 router.get('/orders/:orderId', getOrderById);
-router.put('/orders/:orderId', updateOrder);
+
+router.patch('/orders/:orderId', updateOrder);
+
 router.delete('/orders/:orderId', deleteOrder);
 
 export default router;

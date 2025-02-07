@@ -3,28 +3,25 @@ import { Schema, model } from "mongoose"
  * @swagger
  * components:
  *   schemas:
- *     Alert:
+ *     AlertRule:
  *       type: object
  *       required:
- *         - actualCondition
+ *         - condition
  *       properties:
- *         actualCondition:
+ *         condition:
  *           type: string
- *           description: The actual condition of the alert (in Alert we have the intial condition, here we can store the system exact capture infos or the value exceeded until the the alert is resolved).
+ *           description: The condition of the alert.
  *         initiator:
  *           type: string
  *           description: The user who initiated the alert.
  *         description:
  *           type: string
  *           description: Additional description of the alert.
- *         isResolved:
- *           type: boolean
- *           description: Indicates if the alert is resolved.
- *         history:
+ *         alerts:
  *           type: array
  *           items:
  *             type: string
- *           description: History of the alert, the set of updates that happened on it.
+ *             description: The ID of an alert associated with this rule.
  *         createdAt:
  *           type: string
  *           format: date-time
@@ -34,17 +31,16 @@ import { Schema, model } from "mongoose"
  *           format: date-time
  *           description: The date and time when the alert was last updated.
  *       example:
- *         condition: Critical
+ *         condition: ((CAPTURE(Time) > 9AM) AND (STOCK_DATA_LENGTH > 10kg)) //will be handled by the system and the interface
  *         initiator: 60d0fe4f5311236168a109ca
- *         description: The system detected the absence of the devlivery ship when checking at 9AM (in which it should've been arrived long time before the date mentioned).
- *         isResolved: false
- *         history: [60d0fe4f5311236168a109cb, 60d0fe4f5311236168a109cc]
+ *         description: The system detected the absence of the delivery ship when checking at 9AM (in which it should've arrived long time before the date mentioned).
+ *         alerts: [60d0fe4f5311236168a109cb, 60d0fe4f5311236168a109cc]
  *         createdAt: 2023-10-01T12:00:00Z
  *         updatedAt: 2023-10-01T12:00:00Z
  */
 
-const alertSchema = new Schema({
-    actualCondition: {
+const alertRuleSchema = new Schema({
+    condition: {
         type: String,
         required: true
     },
@@ -55,16 +51,12 @@ const alertSchema = new Schema({
     description: {
         type: String
     },
-    isResolved: {
-        type: Boolean,
-        default: false
-    },
-    history: [{
+    alerts: [{
         type: Schema.Types.ObjectId,
-        ref: 'History'
+        ref: 'Alert'
     }]
 }, { timestamps: true });
 
-const Alert = model('Alert', alertSchema);
+const AlertRule = model('AlertRule', alertRuleSchema);
 
-export default Alert;
+export default AlertRule;

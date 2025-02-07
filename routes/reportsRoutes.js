@@ -74,9 +74,50 @@ import reportsControllers from '../controllers/reportsControllers.js'
  *         description: The deleted report.
  *       404:
  *         description: Report not found.
+ * /api/v1/reports/truck/{tid}:
+ *   get:
+ *     summary: Get reports for a specific truck by truck ID.
+ *     tags: [Reports]
+ *     parameters:
+ *       - in: path
+ *         name: tid
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The ID of the truck to retrieve reports for.
+ *     responses:
+ *       200:
+ *         description: A list of reports for the specified truck.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Report'
+ *       404:
+ *         description: No reports found for the specified truck.
+ * /api/v1/reports/{id}/report-now:
+ *   post:
+ *     summary: Establish a call or an action immediately after the report with the {id}'s condition is satisfied.
+ *     tags: [Reports]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Report'
+ *     responses:
+ *       200:
+ *         description: The report with the condition satisfied.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Report'
+ *       400:
+ *         description: Invalid request body.
  */
 
-const { getReports, getSingleReport, createReport, deleteReport } = reportsControllers
+const { getReports, getSingleReport, getTruckReports, createReport, deleteReport, reportNow } = reportsControllers
 
 const router = Router();
 
@@ -84,7 +125,11 @@ router.get('/', getReports);
 
 router.get('/:id', getSingleReport);
 
+router.get('/truck/:tid', getTruckReports);
+
 router.post('/', createReport);
+
+router.post('/:id/report-now', reportNow);
 
 router.delete('/:id', deleteReport);
 
