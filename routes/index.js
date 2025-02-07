@@ -8,6 +8,7 @@ import historiesRoutes from "./historiesRoutes.js";
 import capteursRoutes from "./capteursRoutes.js";
 import trucksRoutes from "./trucksRoutes.js";
 import alertRulesRoutes from "./alertRulesRoutes.js";
+import captionsRoutes from "./captionsRoutes.js";
 
 const router = Router();
 
@@ -18,6 +19,7 @@ router.use('/reports', reportsRouters);
 router.use('/histories', historiesRoutes);
 router.use('/capteurs', capteursRoutes);
 router.use('/trucks', trucksRoutes);
-router.use('/alert-rules', trucksRoutes);
+router.use('/alert-rules', alertRulesRoutes);
+router.use('/captions', captionsRoutes);
 
 export default router;
