@@ -16,7 +16,7 @@ const getShortestPath = async (req, res, next) => {
     fs.writeFileSync(tempFilePath, JSON.stringify(inputData));
 
     exec(
-      `/bin/bash /home/f100w/tatweer/Back/scripts/pvc.sh ${tempFilePath}`,
+      `/bin/bash /app/scripts/pvc.sh ${tempFilePath}`,
       { timeout: 30000 }, // Increase timeout to 30 seconds
       (error, stdout, stderr) => {
         fs.unlinkSync(tempFilePath); // Clean up the temporary file
