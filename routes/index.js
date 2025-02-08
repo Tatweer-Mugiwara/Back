@@ -11,7 +11,9 @@ import alertRulesRoutes from "./alertRulesRoutes.js";
 import alertsRoutes from "./alertsRoutes.js";
 import captionsRoutes from "./captionsRoutes.js";
 import pvcRoutes from "./pvcRoutes.js";
+import binPacking3dRoutes from "./binPackingRoutes.js";
 import verifyAuth from "../middleware/verifyAuth.js";
+
 
 const router = Router();
 
@@ -29,5 +31,6 @@ router.use('/alert-rules', alertRulesRoutes);
 router.use('/alerts', alertsRoutes);
 router.use('/captions', captionsRoutes);
 router.use("/pvc", pvcRoutes);
+router.use("/bin-packing-3d", binPacking3dRoutes);
 
 export default router;
