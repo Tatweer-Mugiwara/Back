@@ -5,13 +5,13 @@ import path from "path";
 
 const getShortestPath = async (req, res, next) => {
   try {
-    const { cities, matrix } = req.body;
+    const { cities, matrix, size } = req.body;
     // generate a random filename
     const randomFileName = `input_${Date.now()}_${Math.random()
       .toString(36)
       .substring(2, 15)}.json`;
     const tempFilePath = path.join("/tmp", randomFileName);
-    const inputData = { cities, matrix };
+    const inputData = { cities, matrix, size };
 
     fs.writeFileSync(tempFilePath, JSON.stringify(inputData));
 

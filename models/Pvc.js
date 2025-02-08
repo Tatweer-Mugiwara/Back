@@ -9,6 +9,7 @@ import { Schema, model } from "mongoose";
  *    required:
  *      - cities
  *      - matrix
+ *      - size
  *    properties:
  *      cities:
  *          type: array
@@ -22,6 +23,9 @@ import { Schema, model } from "mongoose";
  *              items:
  *                  type: number
  *          description: The matrix of costs between the cities in the list property. The cost is the number of estimated minutes between these cities got by the google maps api.
+ *      size:
+ *          type: number
+ *          description: The size of the supposed collected data.
  *
  */
 
@@ -41,6 +45,10 @@ const PvcSchema = new Schema(
         },
       ],
     ],
+    size: {
+      type: Number,
+      required: true,
+    },
   },
   { timestamps: true }
 );

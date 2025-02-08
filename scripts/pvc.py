@@ -45,10 +45,11 @@ def get_user_input():
     
     cities = data['cities']
     matrix = np.array(data['matrix'])
+    size = data['size']
     
-    return cities, matrix
+    return cities, matrix, size
 
-cities, estimated_time_matrix = get_user_input()
+cities, estimated_time_matrix, size = get_user_input()
 
 # Matrice de corrélation entre trafic, météo et consommation
 def generate_correlated_factors():
@@ -72,7 +73,7 @@ trip_data = []
 for i in range(len(cities)):
     for j in range(len(cities)):
         if i != j:
-            for _ in range(1000):  # 1000 simulations par arête
+            for _ in range(size):  # 1000 simulations par arête
                 adjusted_time, fuel_cost = simulate_conditions(estimated_time_matrix[i][j])
                 trip_data.append([cities[i], cities[j], estimated_time_matrix[i][j], adjusted_time, fuel_cost])
 
