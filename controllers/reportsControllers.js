@@ -106,7 +106,6 @@ const reportNow = async (req, res, next) => {
         await EmailSend({
             name: 'Admin Report!',
             message: `Alert: ${report.condition}`,
-            email: process.env.ADMIN_EMAIL,
             subject: 'Alert'
         })
 

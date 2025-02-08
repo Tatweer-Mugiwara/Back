@@ -100,12 +100,13 @@ import reportsControllers from '../controllers/reportsControllers.js'
  *   post:
  *     summary: Establish a call or an action immediately after the report with the {id}'s condition is satisfied.
  *     tags: [Reports]
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             $ref: '#/components/schemas/Report'
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The ID of the report to act upon.
  *     responses:
  *       200:
  *         description: The report with the condition satisfied.

@@ -6,10 +6,17 @@ import historiesControllers from '../controllers/historiesControllers.js'
  * tags:
  *   name: Histories
  *   description: API endpoints for managing histories
- * /api/v1/histories/{aid}:
+ * /api/v1/histories/alert/{aid}:
  *   get:
  *     summary: Get all histories with the alert id given.
  *     tags: [Histories]
+ *     parameters:
+ *       - in: path
+ *         name: aid
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The alert ID to retrieve histories for.
  *     responses:
  *       200:
  *         description: A list of histories that are related to the alert id given.
@@ -21,6 +28,7 @@ import historiesControllers from '../controllers/historiesControllers.js'
  *                 $ref: '#/components/schemas/History'
  *       404:
  *         description: No histories found.
+ * /api/v1/histories:
  *   post:
  *     summary: Create a new history.
  *     tags: [Histories]
@@ -107,7 +115,7 @@ const { createHistory, deleteHistory, getHistories, getSingleHistory, updateHist
 
 const router = Router();
 
-router.get('/:aid', getHistories);
+router.get('/alert/:aid', getHistories);
 
 router.get('/:id', getSingleHistory);
 

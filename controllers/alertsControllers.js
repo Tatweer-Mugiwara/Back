@@ -34,13 +34,7 @@ const getSingleAlert = async (req, res, next) => {
 
 const createAlert = async (req, res, next) => {
     try {
-        const { condition, description } = req.body;
-
-        const alert = new Alert({
-            condition,
-            description,
-            history: []
-        });
+        const alert = new Alert(req.body);
 
         await alert.save();
 

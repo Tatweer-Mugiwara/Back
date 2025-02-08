@@ -123,7 +123,6 @@ const alertNow = async (req, res, next) => {
         await EmailSend({
             name: 'Admin Alert!',
             message: `Alert: ${aRule.description}`,
-            email: process.env.ADMIN_EMAIL,
             subject: 'Alert'
         })
 

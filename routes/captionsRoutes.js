@@ -41,7 +41,7 @@ const router = Router();
  *         schema:
  *           type: string
  *         required: true
- *         description: The truck ID
+ *         description: The truck ID we want to list all caption captured by the sensors
  *     responses:
  *       200:
  *         description: List of captions for the specified truck
