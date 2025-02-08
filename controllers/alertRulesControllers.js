@@ -41,7 +41,7 @@ const createAlertRule = async (req, res, next) => {
         const aRule = new AlertRule({
             condition,
             description,
-            initiator: req.user._id
+            initiator: req.session.user._id
         });
 
         await aRule.save();

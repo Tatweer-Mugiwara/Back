@@ -4,7 +4,7 @@ import { isValidObjectId } from 'mongoose';
 
 const getHistories = async (req, res, next) => {
     try {
-        const { aid: alertId } = req.user;
+        const { aid: alertId } = req.params;
         const histories = await History.find({
             alert: alertId
         });
