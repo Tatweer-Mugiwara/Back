@@ -19,7 +19,7 @@ router.use('/users', usersRouters);
 
 router.use(verifyAuth);
 
-router.use('/orders',ordersRouters); 
+router.use('/orders', ordersRouters); 
 router.use('/optimization',optimizationRouters); 
 router.use('/reports', reportsRouters);
 router.use('/histories', historiesRoutes);

@@ -1,7 +1,7 @@
 import { Router } from "express";
 import ordersControllers from "../controllers/ordersControllers.js";
 
-const { getOrders, getOrderById, createOrder, updateOrder, deleteOrder } = ordersControllers;
+const { getOrders, getOrderById, createOrder, updateOrder, deleteOrder, fillDBOrders } = ordersControllers;
 
 const router = Router();
 
@@ -44,6 +44,16 @@ const router = Router();
  *               $ref: '#/components/schemas/Order'
  *       400:
  *         description: Invalid request body
+ *
+ * /api/v1/orders/fill:
+ *   post:
+ *     summary: Fill the database with sample orders
+ *     tags: [Orders]
+ *     responses:
+ *       201:
+ *         description: Database filled with sample orders
+ *       500:
+ *         description: Internal server error
  *
  * /api/v1/orders/{orderId}:
  *   get:
@@ -110,6 +120,8 @@ const router = Router();
 router.get('/', getOrders);
 
 router.post('/', createOrder);
+
+router.post('/fill', fillDBOrders);
 
 router.get('/orders/:orderId', getOrderById);
 
