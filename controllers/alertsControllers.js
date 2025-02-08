@@ -39,7 +39,6 @@ const createAlert = async (req, res, next) => {
         const alert = new Alert({
             condition,
             description,
-            initiator: req.session.user._id,
             history: []
         });
 
