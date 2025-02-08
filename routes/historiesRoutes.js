@@ -6,13 +6,13 @@ import historiesControllers from '../controllers/historiesControllers.js'
  * tags:
  *   name: Histories
  *   description: API endpoints for managing histories
- * /api/v1/histories:
+ * /api/v1/histories/{aid}:
  *   get:
- *     summary: Get all histories.
+ *     summary: Get all histories with the alert id given.
  *     tags: [Histories]
  *     responses:
  *       200:
- *         description: A list of histories.
+ *         description: A list of histories that are related to the alert id given.
  *         content:
  *           application/json:
  *             schema:

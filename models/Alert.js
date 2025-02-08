@@ -25,6 +25,7 @@ import { Schema, model } from "mongoose"
  *         alertRule:
  *           type: string
  *           description: The rule that triggered the alert.
+ *           required: true
  *         createdAt:
  *           type: string
  *           format: date-time
@@ -61,7 +62,8 @@ const alertSchema = new Schema({
     }],
     alertRule: {
         type: Schema.Types.ObjectId,
-        ref: 'AlertRule'
+        ref: 'AlertRule',
+        required: true
     }
 }, { timestamps: true });
 

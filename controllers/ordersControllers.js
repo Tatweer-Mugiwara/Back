@@ -53,246 +53,136 @@ const updateOrder = async (req, res, next) => {
 const fillDBOrders = async (req, res, next) => {
     try {
         const orders = await Order.insertMany([{
-            "_id": {
-              "$oid": "67a616ed1279db7b7e83f191"
-            },
+            "_id": "67a616ed1279db7b7e83f191",
             "client": "Client 1",
             "weight": 50,
             "departure": "Alger",
             "destination": "Chlef",
-            "truck": {
-              "$oid": "64b5e8f3c9e77b001d5a9b23"
-            },
+            "truck": "64b5e8f3c9e77b001d5a9b23",
             "truckMaxWeight": 200,
             "status": "assigned",
-            "departureTime": {
-              "$date": "2025-08-30T08:00:00.000Z"
-            },
-            "createdAt": {
-              "$date": "2025-02-07T14:21:33.654Z"
-            },
-            "updatedAt": {
-              "$date": "2025-02-07T14:21:33.654Z"
-            },
-            "__v": 0
+            "departureTime": "2025-08-30T08:00:00.000Z",
+            "createdAt": "2025-02-07T14:21:33.654Z",
+            "updatedAt": "2025-02-07T14:21:33.654Z"
           },
           {
-            "_id": {
-              "$oid": "67a617161279db7b7e83f193"
-            },
+            "_id": "67a617161279db7b7e83f193",
             "client": "Client 2",
             "weight": 75,
             "departure": "Alger",
             "destination": "Oran",
-            "truck": {
-              "$oid": "64b5e8f3c9e77b001d5a9b24"
-            },
+            "truck": "64b5e8f3c9e77b001d5a9b24",
             "truckMaxWeight": 200,
             "status": "assigned",
-            "departureTime": {
-              "$date": "2025-08-30T08:00:00.000Z"
-            },
-            "createdAt": {
-              "$date": "2025-02-07T14:22:14.010Z"
-            },
-            "updatedAt": {
-              "$date": "2025-02-07T14:22:14.010Z"
-            },
-            "__v": 0
+            "departureTime": "2025-08-30T08:00:00.000Z",
+            "createdAt": "2025-02-07T14:22:14.010Z",
+            "updatedAt": "2025-02-07T14:22:14.010Z"
           },
           {
-            "_id": {
-              "$oid": "67a6172b1279db7b7e83f195"
-            },
+            "_id": "67a6172b1279db7b7e83f195",
             "client": "Client 3",
             "weight": 100,
             "departure": "Alger",
             "destination": "Annaba",
-            "truck": {
-              "$oid": "64b5e8f3c9e77b001d5a9b25"
-            },
+            "truck": "64b5e8f3c9e77b001d5a9b25",
             "truckMaxWeight": 200,
             "status": "assigned",
-            "departureTime": {
-              "$date": "2025-08-30T08:00:00.000Z"
-            },
-            "createdAt": {
-              "$date": "2025-02-07T14:22:35.476Z"
-            },
-            "updatedAt": {
-              "$date": "2025-02-07T14:22:35.476Z"
-            },
-            "__v": 0
+            "departureTime": "2025-08-30T08:00:00.000Z",
+            "createdAt": "2025-02-07T14:22:35.476Z",
+            "updatedAt": "2025-02-07T14:22:35.476Z"
           },
           {
-            "_id": {
-              "$oid": "67a6173e1279db7b7e83f197"
-            },
+            "_id": "67a6173e1279db7b7e83f197",
             "client": "Client 4",
             "weight": 130,
             "departure": "Alger",
             "destination": "Constantine",
-            "truck": {
-              "$oid": "64b5e8f3c9e77b001d5a9b26"
-            },
+            "truck": "64b5e8f3c9e77b001d5a9b26",
             "truckMaxWeight": 200,
             "status": "assigned",
-            "departureTime": {
-              "$date": "2025-08-30T08:00:00.000Z"
-            },
-            "createdAt": {
-              "$date": "2025-02-07T14:22:54.073Z"
-            },
-            "updatedAt": {
-              "$date": "2025-02-07T14:22:54.073Z"
-            },
-            "__v": 0
+            "departureTime": "2025-08-30T08:00:00.000Z",
+            "createdAt": "2025-02-07T14:22:54.073Z",
+            "updatedAt": "2025-02-07T14:22:54.073Z"
           },
           {
-            "_id": {
-              "$oid": "67a617561279db7b7e83f199"
-            },
+            "_id": "67a617561279db7b7e83f199",
             "client": "Client 5",
             "weight": 90,
             "departure": "Alger",
             "destination": "Tlemcen",
-            "truck": {
-              "$oid": "64b5e8f3c9e77b001d5a9b27"
-            },
+            "truck": "64b5e8f3c9e77b001d5a9b27",
             "truckMaxWeight": 200,
             "status": "assigned",
-            "departureTime": {
-              "$date": "2025-08-30T08:00:00.000Z"
-            },
-            "createdAt": {
-              "$date": "2025-02-07T14:23:18.921Z"
-            },
-            "updatedAt": {
-              "$date": "2025-02-07T14:23:18.921Z"
-            },
-            "__v": 0
+            "departureTime": "2025-08-30T08:00:00.000Z",
+            "createdAt": "2025-02-07T14:23:18.921Z",
+            "updatedAt": "2025-02-07T14:23:18.921Z"
           },
           {
-            "_id": {
-              "$oid": "67a6176b1279db7b7e83f19b"
-            },
+            "_id": "67a6176b1279db7b7e83f19b",
             "client": "Client 6",
             "weight": 110,
             "departure": "Alger",
             "destination": "Batna",
-            "truck": {
-              "$oid": "64b5e8f3c9e77b001d5a9b28"
-            },
+            "truck": "64b5e8f3c9e77b001d5a9b28",
             "truckMaxWeight": 200,
             "status": "assigned",
-            "departureTime": {
-              "$date": "2025-08-30T08:00:00.000Z"
-            },
-            "createdAt": {
-              "$date": "2025-02-07T14:23:39.035Z"
-            },
-            "updatedAt": {
-              "$date": "2025-02-07T14:23:39.035Z"
-            },
-            "__v": 0
+            "departureTime": "2025-08-30T08:00:00.000Z",
+            "createdAt": "2025-02-07T14:23:39.035Z",
+            "updatedAt": "2025-02-07T14:23:39.035Z"
           },
           {
-            "_id": {
-              "$oid": "67a6177e1279db7b7e83f19d"
-            },
+            "_id": "67a6177e1279db7b7e83f19d",
             "client": "Client 7",
             "weight": 140,
             "departure": "Alger",
             "destination": "Setif",
-            "truck": {
-              "$oid": "64b5e8f3c9e77b001d5a9b29"
-            },
+            "truck": "64b5e8f3c9e77b001d5a9b29",
             "truckMaxWeight": 200,
             "status": "assigned",
-            "departureTime": {
-              "$date": "2025-08-30T08:00:00.000Z"
-            },
-            "createdAt": {
-              "$date": "2025-02-07T14:23:58.866Z"
-            },
-            "updatedAt": {
-              "$date": "2025-02-07T14:23:58.866Z"
-            },
-            "__v": 0
+            "departureTime": "2025-08-30T08:00:00.000Z",
+            "createdAt": "2025-02-07T14:23:58.866Z",
+            "updatedAt": "2025-02-07T14:23:58.866Z"
           },
           {
-            "_id": {
-              "$oid": "67a617911279db7b7e83f19f"
-            },
+            "_id": "67a617911279db7b7e83f19f",
             "client": "Client 8",
             "weight": 80,
             "departure": "Alger",
             "destination": "Blida",
-            "truck": {
-              "$oid": "64b5e8f3c9e77b001d5a9b30"
-            },
+            "truck": "64b5e8f3c9e77b001d5a9b30",
             "truckMaxWeight": 200,
             "status": "assigned",
-            "departureTime": {
-              "$date": "2025-08-30T08:00:00.000Z"
-            },
-            "createdAt": {
-              "$date": "2025-02-07T14:24:17.638Z"
-            },
-            "updatedAt": {
-              "$date": "2025-02-07T14:24:17.638Z"
-            },
-            "__v": 0
+            "departureTime": "2025-08-30T08:00:00.000Z",
+            "createdAt": "2025-02-07T14:24:17.638Z",
+            "updatedAt": "2025-02-07T14:24:17.638Z"
           },
           {
-            "_id": {
-              "$oid": "67a617a51279db7b7e83f1a1"
-            },
+            "_id": "67a617a51279db7b7e83f1a1",
             "client": "Client 9",
             "weight": 125,
             "departure": "Alger",
             "destination": "Béjaïa",
-            "truck": {
-              "$oid": "64b5e8f3c9e77b001d5a9b31"
-            },
+            "truck": "64b5e8f3c9e77b001d5a9b31",
             "truckMaxWeight": 200,
             "status": "assigned",
-            "departureTime": {
-              "$date": "2025-08-30T08:00:00.000Z"
-            },
-            "createdAt": {
-              "$date": "2025-02-07T14:24:37.673Z"
-            },
-            "updatedAt": {
-              "$date": "2025-02-07T14:24:37.673Z"
-            },
-            "__v": 0
+            "departureTime": "2025-08-30T08:00:00.000Z",
+            "createdAt": "2025-02-07T14:24:37.673Z",
+            "updatedAt": "2025-02-07T14:24:37.673Z"
           },
           {
-            "_id": {
-              "$oid": "67a617bb1279db7b7e83f1a3"
-            },
+            "_id": "67a617bb1279db7b7e83f1a3",
             "client": "Client 10",
             "weight": 95,
             "departure": "Alger",
             "destination": "Tizi Ouzou",
-            "truck": {
-              "$oid": "64b5e8f3c9e77b001d5a9b32"
-            },
+            "truck": "64b5e8f3c9e77b001d5a9b32",
             "truckMaxWeight": 200,
             "status": "assigned",
-            "departureTime": {
-              "$date": "2025-08-30T08:00:00.000Z"
-            },
-            "createdAt": {
-              "$date": "2025-02-07T14:24:59.664Z"
-            },
-            "updatedAt": {
-              "$date": "2025-02-07T14:24:59.664Z"
-            },
-            "__v": 0
+            "departureTime": "2025-08-30T08:00:00.000Z",
+            "createdAt": "2025-02-07T14:24:59.664Z",
+            "updatedAt": "2025-02-07T14:24:59.664Z"
           }]
-          );
+        );
         res.status(201).json({ orders });
     } catch (error) {
         next(error)
