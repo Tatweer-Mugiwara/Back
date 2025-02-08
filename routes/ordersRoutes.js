@@ -123,10 +123,10 @@ router.post('/', createOrder);
 
 router.post('/fill', fillDBOrders);
 
-router.get('/orders/:orderId', getOrderById);
+router.get('/:orderId', getOrderById);
 
-router.patch('/orders/:orderId', updateOrder);
+router.patch('/:orderId', updateOrder);
 
-router.delete('/orders/:orderId', deleteOrder);
+router.delete('/:orderId', deleteOrder);
 
 export default router;
