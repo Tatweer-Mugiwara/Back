@@ -3,7 +3,7 @@ import Truck from '../models/Truck.js';
 
 const getTrucks = async (req, res, next) => {
     try {
-        const trucks = await Truck.find({});
+        const trucks = await Truck.find({}).populate('driver');
         res.status(200).json(trucks);
     } catch (error) {
         next(error)
@@ -22,7 +22,7 @@ const createTruck = async(req, res, next) => {
 const getTruckById = async (req, res, next) => {
     try {
         const { id: truckId } = req.params;
-        const truck = await Truck.findById(truckId);
+        const truck = await Truck.findById(truckId).populate('driver');
         if (!truck) {
             return next(new AppError(`Truck with ID ${truckId} not found`, 404));
         }
