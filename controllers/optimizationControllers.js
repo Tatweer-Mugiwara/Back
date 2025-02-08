@@ -242,8 +242,8 @@ const confirmOptimization = async (req, res, next) => {
         });
 
         // Supprimer les commandes d'origine
-        // const orderIds = optimizedOrders.map(order => order._id);
-        // await Order.deleteMany({ _id: { $in: orderIds } });
+        const orderIds = optimizedOrders.map(order => order._id);
+        await Order.deleteMany({ _id: { $in: orderIds } });
 
         // Enregistrer le nouvel ordre
         await newOrder.save();
