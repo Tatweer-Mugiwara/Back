@@ -26,9 +26,12 @@ Make sure to set the following environment variables:
 - `PORT`: Port number for the backend server (default is 3000).
 - `ORIGIN_PORT`: Port number for the frontend server (default is 4000).
 - `SESSION_SECRET`: Secret key for session management. Example: `thisisasessionsecret`
-- `EMAIL_USERKEY`: User key for EmailJS settings. Example: `test`
-- `EMAIL_SERVICEID`: Service ID for EmailJS. Example: `test`
-- `EMAIL_CONTACTTEMPLATEID`: Template ID for sending messages via EmailJS. Example: `test`
+- `SENDER_EMAIL`: The email of the sender 'which is the email of the one created the SMTP server'.
+- `REPLY_TO`: Email listed to reply with when user want to do reply!
+- `SMTP_PORT`: The port of the SMTP server. Example: `465`
+- `SMTP_USER`: The user of the SMTP server.
+- `SMTP_PASS`: The password of the SMTP server.
+- `SMTP_HOST`: The SMTP server host. Example: `smtp.gmail.com`
 - `ADMIN_EMAIL`: The email of the admin. Example: `admin@admin.com`
 
 ## License
