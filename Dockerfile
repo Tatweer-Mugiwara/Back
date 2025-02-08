@@ -25,6 +25,6 @@ RUN npm install
 
 COPY . /app
 
-RUN chmod +x /app/pvc.sh
+RUN chmod +x /app/scripts/pvc.sh
 
-CMD ["nodemon","app.js"]
+CMD ["npm","run","dev"]
