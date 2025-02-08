@@ -10,10 +10,7 @@ import { Schema, model } from "mongoose"
  *       properties:
  *         actualCondition:
  *           type: string
- *           description: The actual condition of the alert (in Alert we have the intial condition, here we can store the system exact capture infos or the value exceeded until the the alert is resolved).
- *         initiator:
- *           type: string
- *           description: The user who initiated the alert.
+ *           description: The actual condition of the alert (in Alert we have the initial condition, here we can store the system exact capture infos or the value exceeded until the alert is resolved).
  *         description:
  *           type: string
  *           description: Additional description of the alert.
@@ -25,6 +22,9 @@ import { Schema, model } from "mongoose"
  *           items:
  *             type: string
  *           description: History of the alert, the set of updates that happened on it.
+ *         alertRule:
+ *           type: string
+ *           description: The rule that triggered the alert.
  *         createdAt:
  *           type: string
  *           format: date-time
@@ -34,11 +34,11 @@ import { Schema, model } from "mongoose"
  *           format: date-time
  *           description: The date and time when the alert was last updated.
  *       example:
- *         condition: Critical
- *         initiator: 60d0fe4f5311236168a109ca
- *         description: The system detected the absence of the devlivery ship when checking at 9AM (in which it should've been arrived long time before the date mentioned).
+ *         actualCondition: Critical
+ *         description: The system detected the absence of the delivery ship when checking at 9AM (in which it should've arrived long time before the date mentioned).
  *         isResolved: false
  *         history: [60d0fe4f5311236168a109cb, 60d0fe4f5311236168a109cc]
+ *         alertRule: 60d0fe4f5311236168a109cd
  *         createdAt: 2023-10-01T12:00:00Z
  *         updatedAt: 2023-10-01T12:00:00Z
  */
@@ -47,10 +47,6 @@ const alertSchema = new Schema({
     actualCondition: {
         type: String,
         required: true
-    },
-    initiator: {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
     },
     description: {
         type: String
@@ -62,7 +58,11 @@ const alertSchema = new Schema({
     history: [{
         type: Schema.Types.ObjectId,
         ref: 'History'
-    }]
+    }],
+    alertRule: {
+        type: Schema.Types.ObjectId,
+        ref: 'AlertRule'
+    }
 }, { timestamps: true });
 
 const Alert = model('Alert', alertSchema);

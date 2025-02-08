@@ -31,7 +31,7 @@ app.use(
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: false, httpOnly: false, maxAge: 3600000 }, // One hour cookie
+    cookie: { secure: false, httpOnly: false, maxAge: 36000000 }, // One hour cookie
     store: new MongoStore({
       mongoUrl: process.env.MONGO_URI + "",
     }),

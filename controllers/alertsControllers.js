@@ -4,7 +4,7 @@ import { isValidObjectId } from 'mongoose';
 
 const getAlerts = async (req, res, next) => {
     try {
-        const alerts = await Alert.find({});
+        const alerts = await Alert.find({}).populate('history');;
 
         res.status(200).json(alerts);
     } catch (error) {
@@ -20,7 +20,7 @@ const getSingleAlert = async (req, res, next) => {
             throw new AppError('Invalid alert ID', 401)
         }
 
-        const alert = await Alert.findById(alertId);
+        const alert = await Alert.findById(alertId).populate('alertRule').populate('history');
 
         if (!alert) {
             throw new AppError('Alert not found', 404);
