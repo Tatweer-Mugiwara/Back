@@ -51,12 +51,13 @@ const getTruckReports = async (req, res, next) => {
 
 const createReport = async (req, res, next) => {
     try {
-        const { condition, capteur, description } = req.body;
+        const { condition, capteur, description, truck } = req.body;
 
         const report = new Report({
             condition,
             capteur,
-            description
+            description,
+            truck
         });
 
         await report.save();
