@@ -4,9 +4,21 @@ The API is documented using Swagger UI. You can access the API documentation at 
 
 ## How to Run
 1. Clone this repository.
-2. Install dependencies using `npm install`.
-3. Copy and fill the necessary env variables from `.env.example` file.
-4. Start the server using `npm run dev`.
+2. Make sure you have python3 and node installed in your system
+3. Set the environments variables as described [below](#environment-variables).
+4. Copy and fill the necessary env variables from `.env.example` file to `.env`.
+5. Install dependencies using `npm install` && `pip install -r requirement.txt`.
+6. Start the server using `npm run dev`.
+
+### Docker
+If you want to use docker:
+1. Make sure to set the environment variables correctly from .env.example to .env, more details [here](#environment-variables)
+2. Run these commands in this order
+```bash
+chmod +x build-docker.sh run-docker.sh
+./build-docker.sh
+./run-docker.sh
+```
 
 ## Environment Variables
 Make sure to set the following environment variables:
